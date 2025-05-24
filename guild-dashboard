@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Breslă</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 20px;
+background-color: #f4f4f4;
+color: #333;
+text-align: center;
+}
+h1 {
+color: #0056b3;
+}
+.sheet-container {
+max-width: 800px;
+margin: 20px auto;
+border: 1px solid #ddd;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+background-color: #fff;
+overflow: hidden; /* Important for iframe /
+border-radius: 8px;
+}
+iframe {
+width: 100%;
+height: 500px; / Ajustează înălțimea după nevoie */
+border: none;
+}
+</style>
+</head>
+<body>
+<h1>Situația Contribuțiilor Breslei</h1>
+<p>Aici poți vedea statusul plăților membrilor. Verde înseamnă pe plus, roșu înseamnă pe minus.</p>
+<div class="sheet-container">
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJyTqWN-YnPzyBKJ8LP9iJ_4Ff4Vr5INFaPmOwGL6t3G_jk1SiS7RjAHw6fcdzVjY0kJjvbBmUgZuG/pubhtml?gid=2005686640&single=true" style="border: none;"></iframe>
+</div>
+<p>Datele se actualizează automat la fiecare 5 minute.</p>
+</body>
+</html>
+```
