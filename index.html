@@ -15,8 +15,56 @@
     h1 {
         color: #0056b3;
     }
+    /* Stiluri noi pentru containerul convertorului */
+    .converter-container {
+        max-width: 600px; /* Lățimea maximă a blocului convertorului */
+        margin: 40px auto 20px auto; /* Spațiu deasupra și sub, centrat */
+        padding: 25px;
+        border: 1px solid #c9c9c9;
+        border-radius: 8px;
+        background-color: #eaf6ff; /* Fundal albastru deschis */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        text-align: left; /* Aliniază textul în interior la stânga */
+    }
+    .converter-container h2 {
+        text-align: center; /* Titlul convertorului centrat */
+        margin-top: 0;
+        color: #0056b3;
+    }
+    .converter-container input[type="number"] {
+        padding: 10px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 150px; /* Lățimea câmpului de intrare */
+        font-size: 1em;
+    }
+    .converter-container button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.2s ease; /* Efect la hover */
+    }
+    .converter-container button:hover {
+        background-color: #0056b3;
+    }
+    .converter-container p {
+        margin-top: 15px;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    #kOutput {
+        color: #007bff; /* Culoarea rezultatului */
+        font-size: 1.2em;
+    }
+
+    /* Stiluri existente pentru containerul tabelului */
     .sheet-container {
-        max-width: 90%; /* Creștem lățimea maximă a containerului */
+        max-width: 90%; /* Păstrează lățimea containerului foii */
         margin: 20px auto;
         border: 1px solid #ddd;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -25,8 +73,8 @@
         border-radius: 8px;
     }
     iframe {
-        width: 100%; /* Ocupă 100% din lățimea containerului părinte */
-        height: 815px; /* Ajustează această înălțime. Începe cu o valoare mai mare, apoi o poți micșora/mări. */
+        width: 100%;
+        height: 700px; /* Ajustează înălțimea foii după nevoie */
         border: none;
     }
 </style>
@@ -34,10 +82,42 @@
 <body>
 <h1>Situația Contribuțiilor Breslei</h1>
 <p>Aici poți vedea statusul plăților membrilor. Verde înseamnă pe plus, roșu înseamnă pe minus. Ai voie sa ai 2 restante maxim. Daca nu le achiti, la a treia out.</p>
+<div class="converter-container">
+            <h2>Convertor KK în K</h2>
+            <p>Introdu valoarea în KK pentru a o converti în unități K (unde 1 K = 100.000):</p>
+            <input type="number" id="kkInput" placeholder="Ex: 1.5"> KK
+            <button id="convertButton">Convertește</button>
+            <p>Rezultat: <span id="kOutput"></span> K</p>
+</div>    
 <div class="sheet-container">
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJyTqWN-YnPzyBKJ8LP9iJ_4Ff4Vr5INFaPmOwGL6t3G_jk1SiS7RjAHw6fcdzVjY0kJjvbBmUgZuG/pubhtml?gid=1094997885&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 </div>
 <p>Datele se actualizează automat la fiecare 5 minute.</p>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const kkInput = document.getElementById('kkInput');
+            const convertButton = document.getElementById('convertButton');
+            const kOutput = document.getElementById('kOutput');
+
+            convertButton.addEventListener('click', function() {
+                // ParseFloat permite numere cu zecimale (ex: 1.5)
+                const kkValue = parseFloat(kkInput.value); 
+
+                if (isNaN(kkValue) || kkInput.value.trim() === '') {
+                    kOutput.textContent = 'Valoare invalidă! Introdu un număr.';
+                    kOutput.style.color = 'red';
+                } else {
+                    // Logica de conversie: 1 KK = 1000 K
+                    const kResult = kkValue * 1000; 
+                    // Formatăm numărul pentru lizibilitate (ex: 1.500 K în loc de 1500 K)
+                    kOutput.textContent = kResult.toLocaleString('ro-RO'); 
+                    kOutput.style.color = '#333'; // Resetează culoarea la normal
+                }
+            });
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
 ```
