@@ -16,74 +16,56 @@
         color: #0056b3;
     }
     /* Stiluri noi pentru containerul convertorului */
+    .top-section-layout {
+        display: flex; /* Activează Flexbox */
+        justify-content: space-around; /* Distribuie spațiu egal între elemente */
+        align-items: flex-start; /* Aliniază elementele la începutul axei transversale (sus) */
+        flex-wrap: wrap; /* Permite elementelor să treacă pe rândul următor pe ecrane mici */
+        max-width: 1000px; /* Lățimea maximă pentru acest container */
+        margin: 40px auto 20px auto; /* Centrează containerul */
+        gap: 30px; /* Spațiu între elementele flexibile */
+    }
+
+    /* Modifică lățimea maximă a convertorului */
     .converter-container {
-        max-width: 600px; /* Lățimea maximă a blocului convertorului */
-        margin: 40px auto 20px auto; /* Spațiu deasupra și sub, centrat */
+        max-width: 450px; /* Ajustează lățimea pentru a încăpea lângă buton */
+        flex: 1; /* Permite-i să ocupe spațiu disponibil */
+        min-width: 300px; /* Lățime minimă pentru a nu se "strica" pe mobil */
+        /* Păstrează celelalte stiluri existente: margin, padding, border, background-color, box-shadow, text-align */
         padding: 25px;
         border: 1px solid #c9c9c9;
         border-radius: 8px;
-        background-color: #eaf6ff; /* Fundal albastru deschis */
+        background-color: #eaf6ff;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        text-align: left; /* Aliniază textul în interior la stânga */
-    }
-    .converter-container h2 {
-        text-align: center; /* Titlul convertorului centrat */
-        margin-top: 0;
-        color: #0056b3;
-    }
-    .converter-container input[type="number"] {
-        padding: 10px;
-        margin-right: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 150px; /* Lățimea câmpului de intrare */
-        font-size: 1em;
-    }
-    .converter-container button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 1em;
-        transition: background-color 0.2s ease; /* Efect la hover */
-    }
-    .converter-container button:hover {
-        background-color: #0056b3;
-    }
-    .converter-container p {
-        margin-top: 15px;
-        font-size: 1.1em;
-        font-weight: bold;
-    }
-    #kOutput {
-        color: #007bff; /* Culoarea rezultatului */
-        font-size: 1.2em;
-    }
-.discord-button-container {
-        margin: 30px auto; /* Spațiu deasupra și sub, centrat */
-        text-align: center;
+        text-align: left;
     }
 
+    /* Ajustează stilurile pentru butonul Discord */
+    .discord-button-container {
+        /* Elimină margin-ul auto, text-align: center, deoarece este gestionat de flexbox-ul părintelui */
+        margin-top: 25px; /* Aliniază-l cu padding-ul convertorului dacă vrei */
+        flex: 0 0 auto; /* Nu se extinde, nu se micșorează, ia doar spațiul necesar */
+        text-align: center; /* Pentru a centra butonul în interiorul containerului său */
+    }
+
+    /* Păstrează stilurile existente pentru .discord-button */
     .discord-button {
         display: inline-block;
         padding: 15px 30px;
-        background-color: #7289DA; /* Culoarea specifică Discord */
+        background-color: #7289DA;
         color: white;
-        text-decoration: none; /* Fără subliniere */
-        border-radius: 8px; /* Colțuri rotunjite */
+        text-decoration: none;
+        border-radius: 8px;
         font-size: 1.2em;
         font-weight: bold;
-        transition: background-color 0.2s ease, transform 0.2s ease; /* Efecte de tranziție */
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Umbră subtilă */
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     .discord-button:hover {
-        background-color: #677BC4; /* Culoare mai închisă la hover */
-        transform: translateY(-2px); /* Efect de "ridicare" la hover */
+        background-color: #677BC4;
+        transform: translateY(-2px);
     }
-    /* Stiluri existente pentru containerul tabelului */
     .sheet-container {
         max-width: 90%; /* Păstrează lățimea containerului foii */
         margin: 20px auto;
@@ -103,13 +85,16 @@
 <body>
 <h1>Situația Contribuțiilor Breslei</h1>
 <p>Aici poți vedea statusul plăților membrilor. Verde înseamnă pe plus, roșu înseamnă pe minus. Ai voie sa ai 2 restante maxim. Daca nu le achiti, la a treia out.</p>
-<div class="converter-container">
+<div class="top-section-layout">
+    
+    <div class="converter-container">
             <h2>Convertor KK în K</h2>
             <p>Introdu valoarea în KK pentru a o converti în unități K (unde 1 K = 100.000):</p>
             <input type="number" id="kkInput" placeholder="Ex: 1.5"> KK
             <button id="convertButton">Convertește</button>
             <p>Rezultat: <span id="kOutput"></span> K</p>
 </div>
+    
 </div> <div class="discord-button-container">
             <a href="https://discord.gg/7gUpVzn5" target="_blank" class="discord-button">
                 Alătură-te Serverului Discord!
@@ -119,6 +104,7 @@
         <div class="sheet-container">
             <iframe src="https://docs.google.com/spreadsheets/d/e/..." style="border: none;"></iframe>
 </div>
+    
 <div class="sheet-container">
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJyTqWN-YnPzyBKJ8LP9iJ_4Ff4Vr5INFaPmOwGL6t3G_jk1SiS7RjAHw6fcdzVjY0kJjvbBmUgZuG/pubhtml?gid=1094997885&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 </div>
