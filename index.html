@@ -61,7 +61,28 @@
         color: #007bff; /* Culoarea rezultatului */
         font-size: 1.2em;
     }
+.discord-button-container {
+        margin: 30px auto; /* Spațiu deasupra și sub, centrat */
+        text-align: center;
+    }
 
+    .discord-button {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #7289DA; /* Culoarea specifică Discord */
+        color: white;
+        text-decoration: none; /* Fără subliniere */
+        border-radius: 8px; /* Colțuri rotunjite */
+        font-size: 1.2em;
+        font-weight: bold;
+        transition: background-color 0.2s ease, transform 0.2s ease; /* Efecte de tranziție */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Umbră subtilă */
+    }
+
+    .discord-button:hover {
+        background-color: #677BC4; /* Culoare mai închisă la hover */
+        transform: translateY(-2px); /* Efect de "ridicare" la hover */
+    }
     /* Stiluri existente pentru containerul tabelului */
     .sheet-container {
         max-width: 90%; /* Păstrează lățimea containerului foii */
@@ -88,7 +109,16 @@
             <input type="number" id="kkInput" placeholder="Ex: 1.5"> KK
             <button id="convertButton">Convertește</button>
             <p>Rezultat: <span id="kOutput"></span> K</p>
-</div>    
+</div>
+</div> <div class="discord-button-container">
+            <a href="https://discord.gg/7gUpVzn5" target="_blank" class="discord-button">
+                Alătură-te Serverului Discord!
+            </a>
+        </div>
+
+        <div class="sheet-container">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/..." style="border: none;"></iframe>
+</div>
 <div class="sheet-container">
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJyTqWN-YnPzyBKJ8LP9iJ_4Ff4Vr5INFaPmOwGL6t3G_jk1SiS7RjAHw6fcdzVjY0kJjvbBmUgZuG/pubhtml?gid=1094997885&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 </div>
