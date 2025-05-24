@@ -1,2 +1,0 @@
-# WeAreThem
-guild dashboard
